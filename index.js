@@ -25,12 +25,13 @@ const checkernumber = (num)=>{
     return true
 }
 
+
 const init = async(bot) =>{
     // starting bot
     bot.on('message', (msg) => {
     // for adding number
     var message = msg.text
-    console.log(message);
+
     if(message==="/start"){
         main_controller[0]="/start"
         bot.sendMessage(msg.from.id, " Welcome ")
@@ -87,7 +88,6 @@ const init = async(bot) =>{
         search_list = "Name    -    Number"
 
         for(let i of data){
-            console.log(i.name,name);
             if (i.name.includes(name)){
                 search_list+=`\n${i.name}   -  ${i.mobile}`
             }
