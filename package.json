@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index"
+    "start": "node index"
   },
   "author": "Shubhadip",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "express": "^4.17.1",
     "node-telegram-bot-api": "^0.54.0",
     "nodemon": "^2.0.14"
+  },
+  "engines": {
+    "node": "17.0.1"
   }
 }
