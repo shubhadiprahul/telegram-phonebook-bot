@@ -3,7 +3,7 @@ const express = require('express');
 const app = express()
 const TelegramBot = require("node-telegram-bot-api");
 const token = process.env.DB_URL
-const port = process.env.DB_PORT
+const port = process.env.DB_PORT || 2022
 const bot = new TelegramBot(token, { polling: true });
 const fs = require('fs')
 app.use(express.json())
@@ -47,7 +47,7 @@ const init = async(bot) =>{
     if(message==="/save") {
         main_controller[0]="/save"
         var data =fs.readFileSync('./data/data.json',"utf-8")
-        console.log(String(data).includes(String(post_data.mobile)));
+
         if(String(data).includes(String(post_data.mobile))){
             // res.send("Already exist")
             bot.sendMessage(msg.chat.id,"Number already exist")
@@ -55,7 +55,7 @@ const init = async(bot) =>{
             data = JSON.parse(data)
             data.push(post_data)
             data = JSON.stringify(data,null,4);
-            console.log(data);
+
             fs.writeFile('./data/data.json', data, 'utf8', (err) => {
                 if (err) {
                     console.log(`Error writing file: ${err}`);
@@ -64,20 +64,17 @@ const init = async(bot) =>{
                     console.log(`File is written successfully!`);
                     bot.sendMessage(msg.chat.id,"Successfully saved!" );
                     bot.sendMessage(msg.chat.id,"press on your desire route" );
-                    // bot.sendMessage(msg.chat.id,"/start /search /create ")
                 }
             });
         }
         else {
             bot.sendMessage(msg.chat.id,"/start /search /create ")
-            // bot.sendMessage(msg.chat.id,"Please first the fill name and number")
         }
            
         }
         
     if (message==="/search"){
         main_controller[0]="/search"
-
         bot.sendMessage(msg.chat.id,"enter a name" );
         
         
