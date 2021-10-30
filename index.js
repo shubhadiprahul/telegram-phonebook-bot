@@ -11,8 +11,8 @@ app.use(express.urlencoded())
 var main_controller =[]
 var post_data ={}
 
-app.get('/',(req,res)=>{
-    res.send({"sucess":"successfully connect......."})
+app.get('/', (req, res) => {
+    res.send({"Success": "Welcome! welcome ............Home page"});
 })
 
 const checkernumber = (num)=>{
